@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:20 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/04 21:10:09 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/05 21:00:35 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ bool	checker_char(std::string str)
 			return true;
 	}
 	return false;
+}
+
+void	to_char(std::string str)
+{
+	char c;
+
+	c = str.at(0);
+	std::cout << "char: " << c << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
 bool	checker_int(std::string str)
