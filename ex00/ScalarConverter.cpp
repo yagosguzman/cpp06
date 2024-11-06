@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:39:06 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/05 20:23:32 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:27:17 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,18 @@ ScalarConverter::~ScalarConverter()
 void ScalarConverter::convert(const std::string& str)
 {
 	if (checker_char(str))
-		to_char(str);
+		convert_char(str);
+	else if (checker_number(str))
+	{
+		if (!str.find('.') && !str.find('f'))
+			convert_int(str);
+		else if (str.find('.') && !str.find('f'))
+			convert_double(str);
+		else
+			convert_float(str);
+	}
+	else if (checker_specials(str))
+		convert_specials(str);
+	else
+		std::cout << "Invalid input" << std::endl;
 }
