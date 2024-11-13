@@ -6,22 +6,22 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:20 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/06 19:42:11 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:52:11 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Checkers.hpp"
+#include <stdlib.h>
 
 bool	checker_char(const std::string& str)
 {
 	if (str.length() == 1 && !isdigit(str.at(0)) && isprint(str.at(0)))
 	{
-		std::cout << "char literal found" << std::endl;
+		// std::cout << "char literal found" << std::endl;
 			return true;
 	}
 	return false;
 }
-
 
 bool	checker_number(const std::string& str)
 {
@@ -80,13 +80,50 @@ void	convert_int(const std::string& str)
 			std::cout << "char: non displayable" << std::endl;
 	}
 	else
-		std::cout << "char: impossible" << std::endl;
-		
+		std::cout << "char: impossible" << std::endl;	
 	std::cout << "int: " << result << std::endl;
 	std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
 	std::cout << "double: " << static_cast<double>(result) << ".0" << std::endl;
 }
 
-void	convert_double(const std::string& str);
-void	convert_float(const std::string& str);
-void	convert_specials(const std::string& str);
+void	convert_double(const std::string& str)
+{
+	std::cout << "It's a double!" << std::endl;
+
+	double result = strtod(str.c_str(), NULL);
+	if (result >= 0 && result <= 127)
+	{
+		if (isprint(result))
+			std::cout << "char: " << result << std::endl;
+		else
+			std::cout << "char: non displayable" << std::endl;
+	}
+	else
+		std::cout << "char: impossible" << std::endl;	
+	std::cout << "int: " << static_cast<int>(result) << std::endl;
+	std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
+	std::cout << "double: " << result << std::endl;
+}
+void	convert_float(const std::string& str)
+{
+	std::cout << "It's a float!" << std::endl;
+
+	double result = strtod(str.c_str(), NULL);
+	if (result >= 0 && result <= 127)
+	{
+		if (isprint(result))
+			std::cout << "char: " << result << std::endl;
+		else
+			std::cout << "char: non displayable" << std::endl;
+	}
+	else
+		std::cout << "char: impossible" << std::endl;
+	std::cout << "int: " << static_cast<int>(result) << std::endl;
+	std::cout << "float: " << result << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(result) << std::endl;
+}
+void	convert_specials(const std::string& str)
+{
+	std::cout << "TO DO" << std::endl;
+	(void)str;
+}

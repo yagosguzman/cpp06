@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:39:06 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/06 19:27:17 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/13 20:36:13 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void ScalarConverter::convert(const std::string& str)
 		convert_char(str);
 	else if (checker_number(str))
 	{
-		if (!str.find('.') && !str.find('f'))
+		if (str.find('.') == std::string::npos && str.find('f') == std::string::npos)
 			convert_int(str);
-		else if (str.find('.') && !str.find('f'))
+		else if (str.find('.') != std::string::npos && str.find('f') == std::string::npos)
 			convert_double(str);
 		else
 			convert_float(str);
