@@ -13,6 +13,6 @@ void	convert_double(const std::string& str);
 void	convert_float(const std::string& str);
 void	convert_specials(const std::string& str);
 
-
+void	return_overflow(void);
 
 #endif

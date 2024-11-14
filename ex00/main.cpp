@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 20:04:51 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/13 19:50:22 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:47:12 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,3 @@ int main (int argc, char** argv)
 	return 0;
 	
 }
-
-// int main(int argc, char** argv) {
-//     // Pruebas de entrada
-	
-// 	if (argc == 2)
-// 	{
-//         std::cout << "Testing \"" << argv[1] << "\": " << std::endl;
-// 		if (checker_number(argv[1]))
-// 			std::cout << "Valid number" << std::endl;
-// 		else
-// 			std::cout << "Invalid number" << std::endl;
-//     }
-
-//     return 0;
-// }

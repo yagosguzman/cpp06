@@ -6,20 +6,19 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:20 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/13 19:52:11 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:45:39 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Checkers.hpp"
 #include <stdlib.h>
+#include <limits>
+#include <cmath>
 
 bool	checker_char(const std::string& str)
 {
 	if (str.length() == 1 && !isdigit(str.at(0)) && isprint(str.at(0)))
-	{
-		// std::cout << "char literal found" << std::endl;
-			return true;
-	}
+		return true;
 	return false;
 }
 
@@ -71,11 +70,16 @@ void	convert_int(const std::string& str)
 {
 	std::cout << "It's an int!" << std::endl;
 
-	int result = atoi(str.c_str());
+	long result = strtol(str.c_str(), NULL, 10);
+	if (result < std::numeric_limits<int>::min() || result > std::numeric_limits<int>::max())
+	{
+		return_overflow();
+		return;
+	}
 	if (result >= 0 && result <= 127)
 	{
 		if (isprint(result))
-			std::cout << "char: " << result << std::endl;
+			std::cout << "char: " << static_cast<char>(result) << std::endl;
 		else
 			std::cout << "char: non displayable" << std::endl;
 	}
@@ -91,39 +95,84 @@ void	convert_double(const std::string& str)
 	std::cout << "It's a double!" << std::endl;
 
 	double result = strtod(str.c_str(), NULL);
-	if (result >= 0 && result <= 127)
+	if (result < std::numeric_limits<double>::min() || result > std::numeric_limits<double>::max())
 	{
-		if (isprint(result))
-			std::cout << "char: " << result << std::endl;
-		else
-			std::cout << "char: non displayable" << std::endl;
+		return_overflow();
+		return;
 	}
-	else
-		std::cout << "char: impossible" << std::endl;	
-	std::cout << "int: " << static_cast<int>(result) << std::endl;
-	std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
-	std::cout << "double: " << result << std::endl;
-}
-void	convert_float(const std::string& str)
-{
-	std::cout << "It's a float!" << std::endl;
-
-	double result = strtod(str.c_str(), NULL);
 	if (result >= 0 && result <= 127)
 	{
 		if (isprint(result))
-			std::cout << "char: " << result << std::endl;
+			std::cout << "char: " << static_cast<char>(result) << std::endl;
 		else
 			std::cout << "char: non displayable" << std::endl;
 	}
 	else
 		std::cout << "char: impossible" << std::endl;
-	std::cout << "int: " << static_cast<int>(result) << std::endl;
-	std::cout << "float: " << result << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(result) << std::endl;
+	if (result < std::numeric_limits<int>::min() || result > std::numeric_limits<int>::max())
+		std::cout << "int: impossible, overflow" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(result) << std::endl;
+	if (std::floor(result) == result)
+	{
+		std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
+		std::cout << "double: " << result << ".0" <<std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
+		std::cout << "double: " << result << std::endl;
+	}
+}
+void	convert_float(const std::string& str)
+{
+	std::cout << "It's a float!" << std::endl;
+
+	float result = strtof(str.c_str(), NULL);
+	if (result < std::numeric_limits<float>::min() || result > std::numeric_limits<float>::max())
+	{
+		return_overflow();
+		return;
+	}
+	if (result >= 0 && result <= 127)
+	{
+		if (isprint(result))
+			std::cout << "char: " << static_cast<char>(result) << std::endl;
+		else
+			std::cout << "char: non displayable" << std::endl;
+	}
+	else
+		std::cout << "char: impossible" << std::endl;
+	if (result < std::numeric_limits<int>::min() || result > std::numeric_limits<int>::max())
+		std::cout << "int: impossible, overflow" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(result) << std::endl;
+	if (std::floor(result) == result)
+	{
+		std::cout << "float: " << result << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(result) << ".0" << std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << result << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(result) << std::endl;
+	}
 }
 void	convert_specials(const std::string& str)
 {
-	std::cout << "TO DO" << std::endl;
-	(void)str;
+	float result = strtof(str.c_str(), NULL);
+
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << result << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(result) << std::endl;	
+}
+
+void	return_overflow(void)
+{
+	std::cout << "Overflow :(" << std::endl;
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: impossible" << std::endl;
+	std::cout << "double: impossible" << std::endl;
 }
