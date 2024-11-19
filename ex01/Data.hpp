@@ -9,6 +9,6 @@ typedef struct Data
 	double d;
 	char c;
 	std::string str;
-};
+} s_data;
 
 #endif
