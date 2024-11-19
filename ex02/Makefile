@@ -1,8 +1,8 @@
-NAME = test
+NAME = exec
 
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -g -fsanitize=address
-SRC_FILES = Serializer.cpp main.cpp
+SRC_FILES = Base.cpp main.cpp
 OBJ_DIR = objs/
 OBJ_FILES = $(SRC_FILES:.cpp=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
