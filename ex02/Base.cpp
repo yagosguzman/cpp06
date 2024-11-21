@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 20:31:49 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/19 21:13:20 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:04:37 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Base::~Base()
 
 Base* Base::generate(void)
 {
+	// srand(time(0)); //If we want to have diferent result each time we execute but all 6 tests will be the same
 	int i = rand() % 3;
 
 	if (i == 0)
@@ -44,7 +45,7 @@ Base* Base::generate(void)
 	}
 }
 
-void Base::identify(Base* p)
+void Base::identify(Base* p) // Here if it's not type A, B or C the pointer will be NULL and it won't enter the if
 {
 	A* a_id = dynamic_cast<A*>(p);
 	B* b_id = dynamic_cast<B*>(p);
@@ -58,7 +59,7 @@ void Base::identify(Base* p)
 		std::cout << "By pointer: The object generated is type C" << std::endl;
 }
 
-void Base::identify(Base& p) // Here we need to use exceptions as we can't use pointers, so we need to work with ref
+void Base::identify(Base& p) // By ref we use exceptions and don't catch anything to not get any error messages during execution
 {
 	try
 	{

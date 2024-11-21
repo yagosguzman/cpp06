@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 19:30:17 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/19 19:56:09 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/21 22:07:19 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void init_data(struct Data* d)
 	d->c = 'Z';
 	d->i = 1989;
 	d->d = 23.14;
-	d->str = "Placeholder str";
+	d->str = "\"Placeholder str\"";
 }
 
 int main(void)

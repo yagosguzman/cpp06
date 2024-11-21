@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:20 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/14 21:45:39 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/21 22:00:39 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	convert_int(const std::string& str)
 	std::cout << "It's an int!" << std::endl;
 
 	long result = strtol(str.c_str(), NULL, 10);
-	if (result < std::numeric_limits<int>::min() || result > std::numeric_limits<int>::max())
+	if (result < -std::numeric_limits<int>::max() || result > std::numeric_limits<int>::max())
 	{
 		return_overflow();
 		return;
@@ -95,7 +95,7 @@ void	convert_double(const std::string& str)
 	std::cout << "It's a double!" << std::endl;
 
 	double result = strtod(str.c_str(), NULL);
-	if (result < std::numeric_limits<double>::min() || result > std::numeric_limits<double>::max())
+	if (result < -std::numeric_limits<double>::max() || result > std::numeric_limits<double>::max())
 	{
 		return_overflow();
 		return;
@@ -109,7 +109,7 @@ void	convert_double(const std::string& str)
 	}
 	else
 		std::cout << "char: impossible" << std::endl;
-	if (result < std::numeric_limits<int>::min() || result > std::numeric_limits<int>::max())
+	if (result < -std::numeric_limits<int>::max() || result > std::numeric_limits<int>::max())
 		std::cout << "int: impossible, overflow" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
@@ -127,9 +127,8 @@ void	convert_double(const std::string& str)
 void	convert_float(const std::string& str)
 {
 	std::cout << "It's a float!" << std::endl;
-
 	float result = strtof(str.c_str(), NULL);
-	if (result < std::numeric_limits<float>::min() || result > std::numeric_limits<float>::max())
+	if (result < -std::numeric_limits<float>::max() || result > std::numeric_limits<float>::max())
 	{
 		return_overflow();
 		return;
