@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:39:06 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/11/21 21:09:55 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:54:54 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ ScalarConverter::~ScalarConverter()
 
 void ScalarConverter::convert(const std::string& str)
 {
+	if (str.length() < 1)
+	{
+		std::cout << "You can't input an empty arg" << std::endl;
+		return;
+	}
 	if (checker_char(str))
 		convert_char(str);
 	else if (checker_number(str))
